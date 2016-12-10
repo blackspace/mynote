@@ -26,29 +26,10 @@ bash的3种引用机制
 $  '  \有特定的意义，在双引号中保留$和'的特定意义,以及当\后跟$ ' " \ newline时的特定意义。
 
 
-函数的输出做为管道
+函数的输入输出做为管道
 ------------------------------------------------
 
-```
-#!/usr/bin/env bash
-
-function a
-{
-    cat <<EOF
-dddd
-ffff
-aaaaa
-aaaa
-bss
-EOF
-}
-
-#会输出bss
-a|grep b
-```
-
-
-两个函数之间用管道连接，
+两个函数之间用管道连接：
 
 ```
 #!/usr/bin/env bash
@@ -73,7 +54,7 @@ B|C
 ```
 apple@apple-System:~$ ./b.sh
 B pid is 4127
-C pid4127
+C pid 4127
 ```
 
 用管道符连接多个命令，每个命令为单独的进程
@@ -101,3 +82,8 @@ apple@apple-System:~$ ./b.sh|./c.sh
 ```
 
 
+bash的空命令
+------------------------------------------------
+
+: [arguments]
+No effect; the command does nothing beyond expanding arguments and performing any specified redirections.  A zero exit code is returned.
