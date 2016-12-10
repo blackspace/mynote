@@ -85,5 +85,6 @@ apple@apple-System:~$ ./b.sh|./c.sh
 bash的空命令
 ------------------------------------------------
 
-: [arguments]
-No effect; the command does nothing beyond expanding arguments and performing any specified redirections.  A zero exit code is returned.
+>: [arguments]
+>
+>No effect; the command does nothing beyond expanding arguments and performing any specified redirections.  A zero exit code is returned.
