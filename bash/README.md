@@ -47,6 +47,35 @@ EOF
 a|grep b
 ```
 
+
+两个函数之间用管道连接，
+
+```
+#!/usr/bin/env bash
+
+function B
+{
+    echo $$ 
+}
+
+function C
+{
+    read bid
+    echo B pid is $bid
+    echo C pid $$ 
+}
+
+
+B|C
+```
+执行结果
+
+```
+apple@apple-System:~$ ./b.sh
+B pid is 4127
+C pid4127
+```
+
 用管道符连接多个命令，每个命令为单独的进程
 ---------------------------------------------
 
@@ -63,6 +92,7 @@ c.sh
 
 echo $$ >&2
 ```
+执行结果
 
 ```
 apple@apple-System:~$ ./b.sh|./c.sh
