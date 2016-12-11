@@ -29,18 +29,6 @@ apple@apple-System:~$
 hello world 
 
 ```
-apple@apple-System:~$ docker run -it --rm microsoft/dotnet
-root@b102a26e3ac0:/# mkdir app
-root@b102a26e3ac0:/# cd app
-root@b102a26e3ac0:/app# dotnet new
-Failed to initialize CoreCLR, HRESULT: 0x80004005
-root@b102a26e3ac0:/app# dotnet new
-Failed to initialize CoreCLR, HRESULT: 0x80004005
-root@b102a26e3ac0:/app# dotnet new
-Failed to initialize CoreCLR, HRESULT: 0x80004005
-root@b102a26e3ac0:/app# dotnet new
-Failed to initialize CoreCLR, HRESULT: 0x80004005
-root@b102a26e3ac0:/app# exit
 apple@apple-System:~$ docker run -it --cap-add ALL --rm microsoft/dotnet
 root@158afb8a0d7e:/# mkdir app
 root@158afb8a0d7e:/# cd app
