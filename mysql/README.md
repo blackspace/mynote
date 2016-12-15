@@ -386,8 +386,147 @@ error.log  mysql-bin.000001  mysql-bin.index
 apple@apple-System:/etc/mysql/mysql.conf.d$ 
 ```
 
+查看二进制文件内容
+------------------------------------------------
+
+创建一个表
+
+```
+mysql> create table tbl (c1 char(10));
+Query OK, 0 rows affected (0.32 sec)
+````
+
+使用mysqlbinlog查看二进制文件内容
+
+```
+apple@apple-System:/var/log/mysql$ sudo mysqlbinlog mysql-bin.000001 
+/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=1*/;
+/*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+DELIMITER /*!*/;
+# at 4
+#161215 20:39:59 server id 1  end_log_pos 123 CRC32 0x7dc0384a 	Start: binlog v 4, server v 5.7.16-0ubuntu0.16.04.1-log created 161215 20:39:59 at startup
+# Warning: this binlog is either in use or was not closed properly.
+ROLLBACK/*!*/;
+BINLOG '
+H49SWA8BAAAAdwAAAHsAAAABAAQANS43LjE2LTB1YnVudHUwLjE2LjA0LjEtbG9nAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAfj1JYEzgNAAgAEgAEBAQEEgAAXwAEGggAAAAICAgCAAAACgoKKioAEjQA
+AUo4wH0=
+'/*!*/;
+# at 123
+#161215 20:39:59 server id 1  end_log_pos 154 CRC32 0x19977d8a 	Previous-GTIDs
+# [empty]
+# at 154
+#161215 20:57:25 server id 1  end_log_pos 219 CRC32 0xae6503e2 	Anonymous_GTID	last_committed=0	sequence_number=1
+SET @@SESSION.GTID_NEXT= 'ANONYMOUS'/*!*/;
+# at 219
+#161215 20:57:25 server id 1  end_log_pos 325 CRC32 0x3f10298b 	Query	thread_id=5	exec_time=1	error_code=0
+use `apple`/*!*/;
+SET TIMESTAMP=1481806645/*!*/;
+SET @@session.pseudo_thread_id=5/*!*/;
+SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+SET @@session.sql_mode=1436549152/*!*/;
+SET @@session.auto_increment_increment=1, @@session.auto_increment_offset=1/*!*/;
+/*!\C utf8 *//*!*/;
+SET @@session.character_set_client=33,@@session.collation_connection=33,@@session.collation_server=8/*!*/;
+SET @@session.lc_time_names=0/*!*/;
+SET @@session.collation_database=DEFAULT/*!*/;
+create table tbl (c1 char(10))
+/*!*/;
+SET @@SESSION.GTID_NEXT= 'AUTOMATIC' /* added by mysqlbinlog */ /*!*/;
+DELIMITER ;
+# End of log file
+/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;
+/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;
+apple@apple-System:/var/log/mysql$ 
+```
+
+插入一行
+```
+mysql> insert into tbl(c1) values('ddddd');
+Query OK, 1 row affected (0.08 sec)
+```
+
+二进制日志加入下面内容
+
+```
+#161215 21:11:13 server id 1  end_log_pos 845 CRC32 0x1fa89f7a 	Xid = 10
+COMMIT/*!*/;
+# at 845
+#161215 21:12:07 server id 1  end_log_pos 910 CRC32 0x2bea95a0 	Anonymous_GTID	last_committed=3	sequence_number=4
+SET @@SESSION.GTID_NEXT= 'ANONYMOUS'/*!*/;
+# at 910
+#161215 21:12:07 server id 1  end_log_pos 983 CRC32 0xba58c65c 	Query	thread_id=5	exec_time=0	error_code=0
+SET TIMESTAMP=1481807527/*!*/;
+BEGIN
+/*!*/;
+# at 983
+#161215 21:12:07 server id 1  end_log_pos 1032 CRC32 0x8f0596fb 	Table_map: `apple`.`tbl` mapped to number 108
+# at 1032
+#161215 21:12:07 server id 1  end_log_pos 1074 CRC32 0xbfbfd414 	Write_rows: table id 108 flags: STMT_END_F
+
+BINLOG '
+p5ZSWBMBAAAAMQAAAAgEAAAAAGwAAAAAAAEABWFwcGxlAAN0YmwAAf4C/goB+5YFjw==
+p5ZSWB4BAAAAKgAAADIEAAAAAGwAAAAAAAEAAgAB//4FZGRkZGQU1L+/
+'/*!*/;
+# at 1074
+```
 
 
+备份数据库
+--------------------------------------------------------
 
+```
+apple@apple-System:/var/log/mysql$ mysqldump -p apple
+Enter password: 
+-- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
+--
+-- Host: localhost    Database: apple
+-- ------------------------------------------------------
+-- Server version	5.7.16-0ubuntu0.16.04.1-log
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tbl`
+--
+
+DROP TABLE IF EXISTS `tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl` (
+  `c1` char(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl`
+--
+
+LOCK TABLES `tbl` WRITE;
+/*!40000 ALTER TABLE `tbl` DISABLE KEYS */;
+INSERT INTO `tbl` VALUES ('ddddd'),('ddddd'),('ddddd');
+/*!40000 ALTER TABLE `tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-12-15 21:19:35
+apple@apple-System:/var/log/mysql$ 
+```
 
