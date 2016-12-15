@@ -27,12 +27,14 @@ bash定义的术语
 
 * metacharacter 下面字符当没有被应用并且用来分割word，被认做metacharacter
 
->|  & ; ( ) < > space tab
-
+```
+|  & ; ( ) < > space tab
+```
 * control operator 下面word履行控制功能时，被认做control operator
 
->|| & && ; ;; ( ) | |& <newline>
-
+```
+|| & && ; ;; ( ) | |& <newline>
+```
 
 bash的保留字
 -----------------------------
@@ -44,9 +46,10 @@ bash的保留字
 * 简单命令的第一个word
 * case和for命令的一部分时，被认为是保留字。
 
->!  case   coproc   do  done elif else esac fi for function if in select
->then until while { } time [[ ]]
-
+```
+!  case   coproc   do  done elif else esac fi for function if in select
+then until while { } time [[ ]]
+```
 
 bash的3种引用机制
 ------------------------------------------
