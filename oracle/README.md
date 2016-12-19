@@ -1,3 +1,19 @@
+sqlplus调整输出
+---------------------------------------------------------
+
+```
+SQL> col name format a70
+SQL> set linesize 300
+SQL>
+```
+
+或者编辑E:\app\Administrator\product\11.2.0\dbhome_4\sqlplus\admin文件，加入
+
+col name format a70
+set linesize 300
+
+
+
 windows下创建数据库
 --------------------------------------
 
@@ -67,30 +83,20 @@ SQL>
 ```
 
 设置oracle管理文件
+--------------------------------------------------------------
 
 ```
 SQL> show parameters db_create
 
-NAME                                 TYPE
------------------------------------- ----------------------
-VALUE
-------------------------------
-db_create_file_dest                  string
-d:\my_oracle_data
-db_create_online_log_dest_1          string
-d:\my_oracle_ctl_log_1
-db_create_online_log_dest_2          string
-d:\my_oracle_ctl_log_2
-db_create_online_log_dest_3          string
-d:\my_oracle_ctl_log_3
+NAME                                 TYPE                   VALUE
+------------------------------------ ---------------------- ------------------------------
+db_create_file_dest                  string                 d:\my_oracle_data
+db_create_online_log_dest_1          string                 d:\my_oracle_ctl_log_1
+db_create_online_log_dest_2          string                 d:\my_oracle_ctl_log_2
+db_create_online_log_dest_3          string                 d:\my_oracle_ctl_log_3
 db_create_online_log_dest_4          string
-
-NAME                                 TYPE
------------------------------------- ----------------------
-VALUE
-------------------------------
-
 db_create_online_log_dest_5          string
+SQL>
 
 ```
 
@@ -151,11 +157,91 @@ SQL> grant resource to apple;
 
 删除用户,需要用户退出数据库
 
-``
+
+```
 SQL> drop user apple;
 
 用户已删除。
 ```
 
+Oracle里的几个号码
+-----------------------------------------
+
+日志序列号
+
+```
+SQL> select group#,sequence#,status from v$log;
+
+    GROUP#  SEQUENCE# STATUS
+---------- ---------- --------------------------------
+         1          4 INACTIVE
+         2          5 INACTIVE
+         3          6 INACTIVE
+         4          7 CURRENT
+         5          0 UNUSED
+```
+
+每次切换日志,改变日志序列号:
+
+```
+SQL> alter system switch logfile;
+
+系统已更改。
+
+SQL> select group#,sequence#,status from v$log;
+
+    GROUP#  SEQUENCE# STATUS
+---------- ---------- --------------------------------
+         1          4 INACTIVE
+         2          5 INACTIVE
+         3          6 INACTIVE
+         4          7 ACTIVE
+         5          8 CURRENT
+```
+
+系统改变号,
 
 
+日志里面的SCN
+
+```
+SQL> select group#,sequence#,status,first_change# from v$log;
+
+    GROUP#  SEQUENCE# STATUS                           FIRST_CHANGE#
+---------- ---------- -------------------------------- -------------
+         1          4 INACTIVE                                968669
+         2          5 INACTIVE                                984568
+         3          6 INACTIVE                               1010148
+         4          7 INACTIVE                               1039661
+         5          8 CURRENT                                1040091
+```
+
+
+数据文件里面的SCN
+
+
+```
+SQL> select file#,checkpoint_change#,name from v$datafile;
+
+     FILE# CHECKPOINT_CHANGE# NAME
+---------- ------------------ ------------------------------------------------------------
+         1            1040091 E:\APP\ADMINISTRATOR\ORADATA\ORCL\SYSTEM01.DBF
+         2            1040091 E:\APP\ADMINISTRATOR\ORADATA\ORCL\SYSAUX01.DBF
+         3            1040091 E:\APP\ADMINISTRATOR\ORADATA\ORCL\UNDOTBS01.DBF
+         4            1040091 E:\APP\ADMINISTRATOR\ORADATA\ORCL\USERS01.DBF
+         5            1040091 D:\MY_ORACLE_DATA\ORCL\DATAFILE\O1_MF_DEVELOPM_D5GP4V7V_.DBF
+```
+
+数据库头的SCN
+
+
+```
+SQL> select name,dbid,checkpoint_change# from V$database;
+
+NAME                                                                         DBID CHECKPOINT_CHANGE#
+---------------------------------------------------------------------- ---------- ------------------
+ORCL                                                                   1458714295            1041383
+
+SQL>
+
+```
