@@ -119,4 +119,43 @@ drop tablespace undotbs_1;
 
 ```
 
+用户管理
+------------------------------------------------
+
+创建用户
+
+```
+SQL> create user apple identified by 123456 default tablespace development;
+
+用户已创建。
+````
+
+此时用户没有create session权限,无法登陆.授予connect角色:
+
+```
+SQL> grant connect to apple;
+
+授权成功。
+```
+
+此时sqlplus能登陆.如果之前Oracle Sql Developer使用sys帐户登陆,需要再次修改设置连接属性,使apple能够登陆.
+
+
+此时不能创建新的表,授予apple resource角色
+
+```
+SQL> grant resource to apple;
+
+授权成功。
+```
+
+删除用户,需要用户退出数据库
+
+``
+SQL> drop user apple;
+
+用户已删除。
+```
+
+
 
