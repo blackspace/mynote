@@ -65,3 +65,58 @@ SQL> create database orcl;
 
 SQL>
 ```
+
+设置oracle管理文件
+
+```
+SQL> show parameters db_create
+
+NAME                                 TYPE
+------------------------------------ ----------------------
+VALUE
+------------------------------
+db_create_file_dest                  string
+d:\my_oracle_data
+db_create_online_log_dest_1          string
+d:\my_oracle_ctl_log_1
+db_create_online_log_dest_2          string
+d:\my_oracle_ctl_log_2
+db_create_online_log_dest_3          string
+d:\my_oracle_ctl_log_3
+db_create_online_log_dest_4          string
+
+NAME                                 TYPE
+------------------------------------ ----------------------
+VALUE
+------------------------------
+
+db_create_online_log_dest_5          string
+
+```
+
+使用如下命令修改参数
+
+alter system set db_crete_online_log_dest_1 = 'd:/my_oracle_ctl_log_1'
+
+这个命令即时有效,重启保留设置.
+
+
+表空间管理
+------------------------------------------
+
+创建表空间
+```
+create tablespace development;
+create temporary tablespace temp_1;
+create undo tablespace undotbs_1;
+````
+
+删除表空间
+```
+drop tablespace development;
+drop tablespace temp_1;
+drop tablespace undotbs_1;
+
+```
+
+
