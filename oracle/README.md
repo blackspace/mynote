@@ -9,9 +9,10 @@ SQL>
 
 或者编辑E:\app\Administrator\product\11.2.0\dbhome_4\sqlplus\admin文件，加入
 
+```
 col name format a70
 set linesize 300
-
+```
 
 
 设置oracle管理文件
@@ -298,6 +299,11 @@ processes                            integer                150
 
 ```
 
+sqlplus连接串
+
+```
+C:\Users\Administrator>sqlplus sys/123456@//localhost:1521/oracl as sysdba
+```
 
 
 
