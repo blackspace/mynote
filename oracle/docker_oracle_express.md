@@ -32,13 +32,19 @@ Starting Oracle Database 11g Express Edition instance.
 ```
 apple@apple-System:~/sqlcl-4.2.0.16.355.0402-no-jre/sqlcl/bin$ ./sql sys/oracle@//172.17.0.2:1521/xe as sysdba
 
-SQLcl: 发行版 4.2.0 Production, 发行日期 星期四 十二月 22 01:29:32 2016
+SQLcl: 发行版 4.2.0 Production, 发行日期 星期四 十二月 22 01:34:34 2016
 
 版权所有 (c) 1982, 2016, Oracle。保留所有权利。
 
 已连接到:
 Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 
+
+SQL> select sysdate from dual;
+
+SYSDATE  
+---------
+21-12月-16
 
 SQL> 
 ```
