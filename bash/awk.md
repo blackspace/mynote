@@ -1,4 +1,7 @@
-#最简单的例子
+
+#AWK笔记
+
+##最简单的例子
 
 ```
 apple@apple-System:~$ echo 1 2 3 4 | awk 'BEGIN {print "hello"} {print $0,"-->",$1,$2,$3,$4 }  END {print "bye"}' 
