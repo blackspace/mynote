@@ -18,3 +18,14 @@ hello
 ```
 
 
+##字符串连接
+
+awk的字符串连接不能使用数字的+，空格就是字符串的连接操作符
+
+
+```
+apple@apple-System:~/mynote$ awk 'BEGIN {x=1+1;s="hello" " " "word";print x,s}' 
+2 hello word
+```
+
+
