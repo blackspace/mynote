@@ -68,16 +68,6 @@ apple@apple-System:~$
 $  '  \有特定的意义，在双引号中保留$和'的特定意义,以及当\后跟$ ' " \ newline时的特定意义。
 
 
-bash的语法
---------------------------------------------------------
-*简单命令
-*管道
-*列表
-*复合命令
-
-bash脚本是由一系列的命令组成，解释器一个命令一个命令的解释执行。
-() {} (()) [[]] if while until caseselect 这些都用来复合生成一个复合命令
-
 
 函数的输入输出做为管道
 ------------------------------------------------
@@ -138,25 +128,11 @@ apple@apple-System:~$ ./b.sh|./c.sh
 bash的空命令
 ------------------------------------------------
 
->: [arguments]
->
->No effect; the command does nothing beyond expanding arguments and performing any specified redirections.  A zero exit code is returned.
+```
+: [arguments]
 
-
-[]
--------------------------------------------------
-[]中的[是一个命令，这个命令最后一个参数需要是]
-
-
-()
----------------------------------------------------
-()中的(是一个token
-
-
-``
-----------------------------------------------------
-``是$()的简单写法,``是一个扩展，`也是一个token
-
+No effect; the command does nothing beyond expanding arguments and performing any specified redirections.  A zero exit code is returned.
+```
 
 条件表达式
 ------------------------------------------------------
