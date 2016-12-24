@@ -69,7 +69,7 @@ $ sudo ls -l /var/run/docker.sock
 srw-rw---- 1 root root 0 12月 24 13:00 /var/run/docker.sock
 ```
 
-###配置dockerd在组docker上监听unix socket
+配置dockerd在组docker上监听unix socket
 
 首先加入一个docker组
 
