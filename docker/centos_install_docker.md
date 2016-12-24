@@ -64,6 +64,8 @@ NB:centos不能像ubuntu一样，把用户加入docker组，就可以省去上�
 
 因为centos监听的unix socket用户组是root，如下面所示：
 
+centos的unix socket文件:
+
 ```
 [apple@mycentos mynote]$ sudo netstat -lnxp|grep docker
 unix  2      [ ACC ]     STREAM     LISTENING     24081    1108/dockerd-latest  /run/docker/libnetwork/4cc5ae0a69787dbf44ac2897452571bd96e170b77cc33045f330d3733131211d.sock
@@ -73,4 +75,11 @@ unix  2      [ ACC ]     STREAM     LISTENING     23093    2138/docker-contain  
 srw-rw---- 1 root root 0 12月 24 13:00 /var/run/docker.sock
 ```
 
+而ubuntu的unix socket文件：
 
+```
+apple@apple-System:~$ for s in $(sudo netstat -lxp|grep docker| awk '{ print $10}'); do sudo ls -l $s; done
+srw-rw---- 1 root root 0 12月 25  2016 /var/run/docker/libcontainerd/docker-containerd.sock
+srw------- 1 root root 0 12月 25  2016 /run/docker/libnetwork/7657e04210f8aab787cb4c7037e281208a888d7b5d00ffb330aba1e06ff2f1dc.sock
+srw-rw---- 1 root docker 0 12月 25  2016 /var/run/docker.sock
+```
