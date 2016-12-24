@@ -62,17 +62,22 @@ hello world
 
 普通用户使用docker client
 ----------------------------------------------------------------------------------------------------------------
-如下面所示：
+如下所示centos默认dockerd监听的unix socket文件的用户组是root，所以普通用户需要sudo才能和dockerd通信。
 
 ```
 $ sudo ls -l /var/run/docker.sock 
 srw-rw---- 1 root root 0 12月 24 13:00 /var/run/docker.sock
 ```
 
-centos监听的unix socket用户组是root，所以普通用户需要sudo才能和dockerd通信。
+###配置dockerd在组docker上监听unix socket
+
+首先加入一个docker组
+
+```
+# groupadd docker
+```
 
 
-###dockerd用组为docker的unix socket监听
 
 编辑/etc/sysconfig/docker文件,在OPTIONS中加入--group=docker
 
@@ -181,8 +186,13 @@ Insecure Registries:
 Registries: docker.io (secure)
 ```
 
+BTW：ubuntu的dockerd监听的unix socket文件：
 
+```
+apple@apple-System:~$ for s in $(sudo netstat -lxp|grep docker| awk '{ print $10}'); do sudo ls -l $s; done
+srw-rw---- 1 root root 0 12月 25  2016 /var/run/docker/libcontainerd/docker-containerd.sock
+srw------- 1 root root 0 12月 25  2016 /run/docker/libnetwork/7657e04210f8aab787cb4c7037e281208a888d7b5d00ffb330aba1e06ff2f1dc.sock
+srw-rw---- 1 root docker 0 12月 25  2016 /var/run/docker.sock
+```
 
-
-
-
+ubuntu默认在docker组监听unix socket，所以不需要这一步。
