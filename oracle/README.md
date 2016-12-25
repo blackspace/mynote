@@ -1,4 +1,4 @@
-sqlplusµ÷ÕûÊä³ö
+sqlplusè°ƒæ•´è¾“å‡º
 ---------------------------------------------------------
 
 ```
@@ -7,7 +7,7 @@ SQL> set linesize 300
 SQL>
 ```
 
-»òÕß±à¼­E:\app\Administrator\product\11.2.0\dbhome_4\sqlplus\adminÎÄ¼þ£¬¼ÓÈë
+æˆ–è€…ç¼–è¾‘E:\app\Administrator\product\11.2.0\dbhome_4\sqlplus\adminæ–‡ä»¶ï¼ŒåŠ å…¥
 
 ```
 col name format a70
@@ -15,7 +15,7 @@ set linesize 300
 ```
 
 
-ÉèÖÃoracle¹ÜÀíÎÄ¼þ
+è®¾ç½®oracleç®¡ç†æ–‡ä»¶
 --------------------------------------------------------------
 
 ```
@@ -33,88 +33,88 @@ SQL>
 
 ```
 
-Ê¹ÓÃÈçÏÂÃüÁîÐÞ¸Ä²ÎÊý
+ä½¿ç”¨å¦‚ä¸‹å‘½ä»¤ä¿®æ”¹å‚æ•°
 
 alter system set db_crete_online_log_dest_1 = 'd:/my_oracle_ctl_log_1'
 
-Õâ¸öÃüÁî¼´Ê±ÓÐÐ§,ÖØÆô±£ÁôÉèÖÃ.
+è¿™ä¸ªå‘½ä»¤å³æ—¶æœ‰æ•ˆ,é‡å¯ä¿ç•™è®¾ç½®.
 
 
 
-ÆôÓÃ¹éµµÈÕÖ¾
+å¯ç”¨å½’æ¡£æ—¥å¿—
 -----------------------------
 
-²é¿´¹éµµÄ£Ê½
+æŸ¥çœ‹å½’æ¡£æ¨¡å¼
 
 ```
 SQL> archive log list;
-Êý¾Ý¿âÈÕÖ¾Ä£Ê½             ·Ç´æµµÄ£Ê½
-×Ô¶¯´æµµ             ½ûÓÃ
-´æµµÖÕµã            USE_DB_RECOVERY_FILE_DEST
-×îÔçµÄÁª»úÈÕÖ¾ÐòÁÐ     7
-µ±Ç°ÈÕÖ¾ÐòÁÐ           11
+æ•°æ®åº“æ—¥å¿—æ¨¡å¼             éžå­˜æ¡£æ¨¡å¼
+è‡ªåŠ¨å­˜æ¡£             ç¦ç”¨
+å­˜æ¡£ç»ˆç‚¹            USE_DB_RECOVERY_FILE_DEST
+æœ€æ—©çš„è”æœºæ—¥å¿—åºåˆ—     7
+å½“å‰æ—¥å¿—åºåˆ—           11
 ```
 
-¹Ø±ÕÊý¾Ý¿â
+å…³é—­æ•°æ®åº“
 
 ```
 SQL> shutdown immediate
-Êý¾Ý¿âÒÑ¾­¹Ø±Õ¡£
-ÒÑ¾­Ð¶ÔØÊý¾Ý¿â¡£
-ORACLE Àý³ÌÒÑ¾­¹Ø±Õ¡£
+æ•°æ®åº“å·²ç»å…³é—­ã€‚
+å·²ç»å¸è½½æ•°æ®åº“ã€‚
+ORACLE ä¾‹ç¨‹å·²ç»å…³é—­ã€‚
 ```
 
-Æô¶¯Êý¾Ý¿âµ½mountÄ£Ê½
+å¯åŠ¨æ•°æ®åº“åˆ°mountæ¨¡å¼
 
 ```
 SQL> startup mount
-ORACLE Àý³ÌÒÑ¾­Æô¶¯¡£
+ORACLE ä¾‹ç¨‹å·²ç»å¯åŠ¨ã€‚
 
 Total System Global Area  711430144 bytes
 Fixed Size                  1374584 bytes
 Variable Size             218105480 bytes
 Database Buffers          486539264 bytes
 Redo Buffers                5410816 bytes
-Êý¾Ý¿â×°ÔØÍê±Ï¡£
+æ•°æ®åº“è£…è½½å®Œæ¯•ã€‚
 ```
 
-¸ü¸Ä¹éµµÄ£Ê½£¬²¢´ò¿ªÊý¾Ý¿â
+æ›´æ”¹å½’æ¡£æ¨¡å¼ï¼Œå¹¶æ‰“å¼€æ•°æ®åº“
 
 ```
 SQL> alter database archivelog;
 
-Êý¾Ý¿âÒÑ¸ü¸Ä¡£
+æ•°æ®åº“å·²æ›´æ”¹ã€‚
 
 SQL> alter database open;
 
-Êý¾Ý¿âÒÑ¸ü¸Ä¡£
+æ•°æ®åº“å·²æ›´æ”¹ã€‚
 ```
 
-½á¹û²úÉúE:\app\Administrator\flash_recovery_area\orcl\ARCHIVELOG\2016_12_19\O1_MF_1_11_D5HGKLQK_.ARCÎÄ¼þ£¬Êý¾Ý¿âÒÑ¾­¸Ä±äÎªÈÕÖ¾¹éµµÄ£Ê½£º
+ç»“æžœäº§ç”ŸE:\app\Administrator\flash_recovery_area\orcl\ARCHIVELOG\2016_12_19\O1_MF_1_11_D5HGKLQK_.ARCæ–‡ä»¶ï¼Œæ•°æ®åº“å·²ç»æ”¹å˜ä¸ºæ—¥å¿—å½’æ¡£æ¨¡å¼ï¼š
 
 
 ```
 SQL> archive log list
-Êý¾Ý¿âÈÕÖ¾Ä£Ê½            ´æµµÄ£Ê½
-×Ô¶¯´æµµ             ÆôÓÃ
-´æµµÖÕµã            USE_DB_RECOVERY_FILE_DEST
-×îÔçµÄÁª»úÈÕÖ¾ÐòÁÐ     7
-ÏÂÒ»¸ö´æµµÈÕÖ¾ÐòÁÐ   11
-µ±Ç°ÈÕÖ¾ÐòÁÐ           11
+æ•°æ®åº“æ—¥å¿—æ¨¡å¼            å­˜æ¡£æ¨¡å¼
+è‡ªåŠ¨å­˜æ¡£             å¯ç”¨
+å­˜æ¡£ç»ˆç‚¹            USE_DB_RECOVERY_FILE_DEST
+æœ€æ—©çš„è”æœºæ—¥å¿—åºåˆ—     7
+ä¸‹ä¸€ä¸ªå­˜æ¡£æ—¥å¿—åºåˆ—   11
+å½“å‰æ—¥å¿—åºåˆ—           11
 ```
 
 
-±í¿Õ¼ä¹ÜÀí
+è¡¨ç©ºé—´ç®¡ç†
 ------------------------------------------
 
-´´½¨±í¿Õ¼ä
+åˆ›å»ºè¡¨ç©ºé—´
 ```
 create tablespace development;
 create temporary tablespace temp_1;
 create undo tablespace undotbs_1;
 ````
 
-É¾³ý±í¿Õ¼ä
+åˆ é™¤è¡¨ç©ºé—´
 ```
 drop tablespace development;
 drop tablespace temp_1;
@@ -122,51 +122,51 @@ drop tablespace undotbs_1;
 
 ```
 
-ÓÃ»§¹ÜÀí
+ç”¨æˆ·ç®¡ç†
 ------------------------------------------------
 
-´´½¨ÓÃ»§
+åˆ›å»ºç”¨æˆ·
 
 ```
 SQL> create user apple identified by 123456 default tablespace development;
 
-ÓÃ»§ÒÑ´´½¨¡£
+ç”¨æˆ·å·²åˆ›å»ºã€‚
 ````
 
-´ËÊ±ÓÃ»§Ã»ÓÐcreate sessionÈ¨ÏÞ,ÎÞ·¨µÇÂ½.ÊÚÓèconnect½ÇÉ«:
+æ­¤æ—¶ç”¨æˆ·æ²¡æœ‰create sessionæƒé™,æ— æ³•ç™»é™†.æŽˆäºˆconnectè§’è‰²:
 
 ```
 SQL> grant connect to apple;
 
-ÊÚÈ¨³É¹¦¡£
+æŽˆæƒæˆåŠŸã€‚
 ```
 
-´ËÊ±sqlplusÄÜµÇÂ½.Èç¹ûÖ®Ç°Oracle Sql DeveloperÊ¹ÓÃsysÕÊ»§µÇÂ½,ÐèÒªÔÙ´ÎÐÞ¸ÄÉèÖÃÁ¬½ÓÊôÐÔ,Ê¹appleÄÜ¹»µÇÂ½.
+æ­¤æ—¶sqlplusèƒ½ç™»é™†.å¦‚æžœä¹‹å‰Oracle Sql Developerä½¿ç”¨syså¸æˆ·ç™»é™†,éœ€è¦å†æ¬¡ä¿®æ”¹è®¾ç½®è¿žæŽ¥å±žæ€§,ä½¿appleèƒ½å¤Ÿç™»é™†.
 
 
-´ËÊ±²»ÄÜ´´½¨ÐÂµÄ±í,ÊÚÓèapple resource½ÇÉ«
+æ­¤æ—¶ä¸èƒ½åˆ›å»ºæ–°çš„è¡¨,æŽˆäºˆapple resourceè§’è‰²
 
 ```
 SQL> grant resource to apple;
 
-ÊÚÈ¨³É¹¦¡£
+æŽˆæƒæˆåŠŸã€‚
 ```
 
-É¾³ýÓÃ»§,ÐèÒªÓÃ»§ÍË³öÊý¾Ý¿â
+åˆ é™¤ç”¨æˆ·,éœ€è¦ç”¨æˆ·é€€å‡ºæ•°æ®åº“
 
 
 ```
 SQL> drop user apple;
 
-ÓÃ»§ÒÑÉ¾³ý¡£
+ç”¨æˆ·å·²åˆ é™¤ã€‚
 ```
 
-²éÑ¯ÓÃ»§´´½¨µÄ±í
+æŸ¥è¯¢ç”¨æˆ·åˆ›å»ºçš„è¡¨
 
 ```
 SQL> create table tbl1 (name varchar(10));
 
-±íÒÑ´´½¨¡£
+è¡¨å·²åˆ›å»ºã€‚
 
 SQL> select table_name,tablespace_name from user_tables;
 
@@ -176,13 +176,13 @@ TBL1                                                         DEVELOPMENT
 
 SQL> select * from tbl1;
 
-Î´Ñ¡¶¨ÐÐ
+æœªé€‰å®šè¡Œ
 ```
 
-OracleÀïµÄ¼¸¸öºÅÂë
+Oracleé‡Œçš„å‡ ä¸ªå·ç 
 -----------------------------------------
 
-ÈÕÖ¾ÐòÁÐºÅ
+æ—¥å¿—åºåˆ—å·
 
 ```
 SQL> select group#,sequence#,status from v$log;
@@ -196,12 +196,12 @@ SQL> select group#,sequence#,status from v$log;
          5          0 UNUSED
 ```
 
-Ã¿´ÎÇÐ»»ÈÕÖ¾,¸Ä±äÈÕÖ¾ÐòÁÐºÅ:
+æ¯æ¬¡åˆ‡æ¢æ—¥å¿—,æ”¹å˜æ—¥å¿—åºåˆ—å·:
 
 ```
 SQL> alter system switch logfile;
 
-ÏµÍ³ÒÑ¸ü¸Ä¡£
+ç³»ç»Ÿå·²æ›´æ”¹ã€‚
 
 SQL> select group#,sequence#,status from v$log;
 
@@ -214,10 +214,10 @@ SQL> select group#,sequence#,status from v$log;
          5          8 CURRENT
 ```
 
-ÏµÍ³¸Ä±äºÅ,
+ç³»ç»Ÿæ”¹å˜å·,
 
 
-ÈÕÖ¾ÀïÃæµÄSCN
+æ—¥å¿—é‡Œé¢çš„SCN
 
 ```
 SQL> select group#,sequence#,status,first_change# from v$log;
@@ -232,7 +232,7 @@ SQL> select group#,sequence#,status,first_change# from v$log;
 ```
 
 
-Êý¾ÝÎÄ¼þÀïÃæµÄSCN
+æ•°æ®æ–‡ä»¶é‡Œé¢çš„SCN
 
 
 ```
@@ -247,7 +247,7 @@ SQL> select file#,checkpoint_change#,name from v$datafile;
          5            1040091 D:\MY_ORACLE_DATA\ORCL\DATAFILE\O1_MF_DEVELOPM_D5GP4V7V_.DBF
 ```
 
-Êý¾Ý¿âÍ·µÄSCN
+æ•°æ®åº“å¤´çš„SCN
 
 
 ```
@@ -261,7 +261,7 @@ SQL>
 
 ```
 
-OracleµÄ¸ú×ÙÎÄ¼þ
+Oracleçš„è·Ÿè¸ªæ–‡ä»¶
 ----------------------------------------------------------
 
 ```
@@ -281,7 +281,7 @@ user_dump_dest                       string                 e:\app\administrator
 SQL>
 ```
 
-OracleµÄºóÌ¨½ø³Ì
+Oracleçš„åŽå°è¿›ç¨‹
 --------------------------------------
 
 ```
@@ -299,7 +299,7 @@ processes                            integer                150
 
 ```
 
-sqlplusÁ¬½Ó´®
+sqlplusè¿žæŽ¥ä¸²
 
 ```
 C:\Users\Administrator>sqlplus sys/123456@//localhost:1521/oracl as sysdba
@@ -307,70 +307,4 @@ C:\Users\Administrator>sqlplus sys/123456@//localhost:1521/oracl as sysdba
 
 
 
-windowsÏÂ´´½¨Êý¾Ý¿â
---------------------------------------
 
-pfileÎÄ¼þ
-
-```
-orcl.__db_cache_size=444596224
-orcl.__java_pool_size=8388608
-orcl.__large_pool_size=8388608
-orcl.__oracle_base='E:\app\Administrator'#ORACLE_BASE set from environment
-orcl.__pga_aggregate_target=478150656
-orcl.__sga_target=704643072
-orcl.__shared_io_pool_size=0
-orcl.__shared_pool_size=234881024
-orcl.__streams_pool_size=0
-*.audit_trail='db'
-*.compatible='11.2.0.0.0'
-*.db_block_size=8192
-orcl.db_create_file_dest='d:\my_oracle_data'
-orcl.db_create_online_log_dest_1='d:\my_oracle_ctl_log_1'
-orcl.db_create_online_log_dest_2='d:\my_oracle_ctl_log_2'
-*.db_domain=''
-*.db_name='orcl'
-*.db_recovery_file_dest_size=4039114752
-*.diagnostic_dest='E:\app\Administrator'
-*.dispatchers='(PROTOCOL=TCP) (SERVICE=orclXDB)'
-*.local_listener='LISTENER_ORCL'
-*.memory_target=1180696576
-*.nls_language='SIMPLIFIED CHINESE'
-*.nls_territory='CHINA'
-*.open_cursors=300
-*.processes=150
-*.remote_login_passwordfile='EXCLUSIVE'
-
-```
-
-
-```
-C:\Users\Administrator>oradim -delete -sid orcl
-ÊµÀýÒÑÉ¾³ý¡£
-
-C:\Users\Administrator>oradim -new -sid orcl -startmode manual -pfile d:\initorc
-l.ora
-ÊµÀýÒÑ´´½¨¡£
-
-C:\Users\Administrator>sqlplus / as sysdba
-
-SQL*Plus: Release 11.2.0.1.0 Production on ÐÇÆÚÈÕ 12ÔÂ 18 23:26:53 2016
-
-Copyright (c) 1982, 2010, Oracle.  All rights reserved.
-
-ÒÑÁ¬½Óµ½¿ÕÏÐÀý³Ì¡£
-
-SQL> startup pfile='d:\initorcl.ora' nomount
-ORACLE Àý³ÌÒÑ¾­Æô¶¯¡£
-
-Total System Global Area  711430144 bytes
-Fixed Size                  1374584 bytes
-Variable Size             260048520 bytes
-Database Buffers          444596224 bytes
-Redo Buffers                5410816 bytes
-SQL> create database orcl;
-
-Êý¾Ý¿âÒÑ´´½¨¡£
-
-SQL>
-```
