@@ -1,7 +1,15 @@
+emacs编码系统转换
+===============================================================
+
+如果打开一个文件乱码，用下面的命令设置正确的编码
+
 
 ```
 M-x revert-buffer-with-coding-system
 ```
+
+用某一个编码保存文件
+
 
 ```
 M-x set-buffer-file-coding-system
