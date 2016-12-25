@@ -39,3 +39,29 @@ In case you are confused over the difference between the Gnome Shell theme and t
 $ gnome-tweak-tool 
 ```
 
+
+##按照ntfs支持
+
+
+```
+$ sudo wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+$ sudo yum update
+$ sudo yum install ntfs-3g
+```
+
+##查询一个已经安装包的安装的文件
+
+```
+$  rpm -ql $(rpm -qa|grep jdk1.8.0)
+```
+
+
+##查询一个包文件的文件内容 
+
+```
+$ rpm -qlp jdk-8u111-linux-x64.rpm 
+```
+
+
+
+
