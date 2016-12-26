@@ -20,5 +20,5 @@ docker镜像
 
 ```
 apple@apple-System:/etc/docker$ cat daemon.json 
-{"registry-mirrors": ["http://2b5283a6.m.daocloud.io"]}
+
 ```
