@@ -63,5 +63,18 @@ $ rpm -qlp jdk-8u111-linux-x64.rpm
 ```
 
 
+##gnome terminal字体
+
+
+可以选择下面字体:
+
+* WenQuanYi Zen Hei Mono Regular(主推)
+* unibit regular
+
+
+
+
+
+
 
 
