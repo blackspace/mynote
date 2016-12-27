@@ -26,7 +26,7 @@ centos安装postgresql
 		Hint: Some lines were ellipsized, use -l to show in full.
 		```
 
-如果遇到上面的问题执行下面的命令，创建数据目录
+   如果遇到上面的问题执行下面的命令，创建数据目录
 
 
 		```
