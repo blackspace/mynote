@@ -1,8 +1,3 @@
-# cat /proc/sys/kernel/sem
-# 250     32000   100      128
-# SEMMSL  SEMMNS  SEMOPM  SEMMNI. 
-
-
 while read a; do sudo sysctl "$a"; done <<EOF
 fs.file-max = 6815744
 fs.aio-max-nr = 1048576
