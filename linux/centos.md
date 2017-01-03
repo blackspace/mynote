@@ -72,8 +72,11 @@ $ rpm -qlp jdk-8u111-linux-x64.rpm
 * unibit regular
 
 
+##gnome shell扩展本地管理
 
-
+```
+$ gnome-shell-extension-prefs
+```
 
 
 
