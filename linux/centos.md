@@ -78,6 +78,9 @@ $ rpm -qlp jdk-8u111-linux-x64.rpm
 $ gnome-shell-extension-prefs
 ```
 
+```
+http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+```
 
 
 
