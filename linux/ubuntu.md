@@ -32,6 +32,17 @@ apt-cache search emacs|grep ^emacs
  dpkg -l|grep emacs
 ```
 
+查看加入的PPA
+
+```
+ls /etc/apt/sources.list.d/
+```
+
+删除PPA
+```
+sudo apt-add-repository -r ppa:alexey-smirnov/deadbeef 
+```
+
 
 状态板放置系统监视扩展
 -----------------------------------------------------------
@@ -44,7 +55,11 @@ Alt+F2, then r
 
 
 
+去掉启动logo
+-------------------------------------------------------------
 
-
-
+```
+GRUB_CMDLINE_LINUX_DEFAULT="text"
+sudo update-grub
+```
 
