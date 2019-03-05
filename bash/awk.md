@@ -28,4 +28,3 @@ apple@apple-System:~/mynote$ awk 'BEGIN {x=1+1;s="hello" " " "word";print x,s}'
 2 hello word
 ```
 
-
