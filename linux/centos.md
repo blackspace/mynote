@@ -1,5 +1,42 @@
-Centos笔记
+包管理
 =============================================================================
+
+
+查询可以安装的包
+
+```
+yum list <glob模式>
+```
+
+
+
+
+查询包含某一个文件的包
+
+```
+yum whatprovides <文件名>
+```
+
+
+安装包
+
+```
+yum install <包名>
+```
+
+查询一个已经安装包的安装的文件
+
+```
+$  rpm -ql $(rpm -qa|grep <包名>)
+```
+
+
+查询一个包文件的文件内容 
+
+```
+$ rpm -qlp <包名>
+```
+
 
 
 启动界面选择
@@ -40,7 +77,7 @@ $ gnome-tweak-tool
 ```
 
 
-##按照ntfs支持
+##安装ntfs支持
 
 
 ```
@@ -48,20 +85,6 @@ $ sudo wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.
 $ sudo yum update
 $ sudo yum install ntfs-3g
 ```
-
-##查询一个已经安装包的安装的文件
-
-```
-$  rpm -ql $(rpm -qa|grep jdk1.8.0)
-```
-
-
-##查询一个包文件的文件内容 
-
-```
-$ rpm -qlp jdk-8u111-linux-x64.rpm 
-```
-
 
 ##gnome terminal字体
 
