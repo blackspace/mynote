@@ -1,0 +1,13 @@
+version: '3'
+services:
+        web:
+          build: ./nginx
+          volumes:
+            - ./tmp/nginx_root:/usr/share/nginx/html
+          ports:
+            - "8080:80"
+          depends_on:
+            - rails
+
+                  
+
