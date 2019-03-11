@@ -1,0 +1,23 @@
+version: '3'
+services:
+        ha:
+          build: ./haproxy
+          ports:
+            - "8080:80"
+          depends_on:
+            - web_0
+            - web_1
+            - web_2
+            - web_3
+        web_0:
+          build: ./nginx_passenger
+        web_1:
+          build: ./nginx_passenger
+        web_2:
+          build: ./nginx_passenger
+        web_3:
+          build: ./nginx_passenger          
+  
+
+                  
+
