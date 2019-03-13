@@ -1,11 +1,27 @@
 version: '3'
+
+
+networks:
+  my_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        -  subnet: 172.16.236.0/24
+
 services:
         db:
           image: postgres
           volumes:
             - ./tmp/db:/var/lib/postgresql/data
+          networks:
+            my_net:
+              ipv4_address: 172.16.236.11
         rails:
           build: ./rails
+          networks:
+            my_net:
+              ipv4_address: 172.16.236.12
           command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
           volumes:
             - ./rails:/myapp
@@ -15,6 +31,9 @@ services:
             - db
         web:
           build: ./nginx
+          networks:
+            my_net:
+              ipv4_address: 172.16.236.13
           volumes:
             - ./tmp/nginx_root:/usr/share/nginx/html
           ports:

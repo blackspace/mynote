@@ -1,13 +1,13 @@
 version: '3'
 services:
-        web:
-          build: ./nginx_passenger
-          volumes:
-            - ./webapp:/home/app/webapp
-          working_dir: /home/app/webapp
-          command: bash -lc 'bundle install && /sbin/my_init'
-          ports:
-            - "8080:80"
+  web:
+    build: ./nginx_passenger
+    volumes:
+      - ./webapp:/home/app/webapp
+    working_dir: /home/app/webapp
+    command: bash -lc 'bundle install && /sbin/my_init'
+    ports:
+        - "8080:80"
 
-                  
+        
 
