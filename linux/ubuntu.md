@@ -3,6 +3,12 @@ Ubuntu
 ===================================================
 
 
+更换源
+```
+# cat /etc/apt/sources.list|sed 's/archive.ubuntu.com/mirrors.aliyun.com/;s/archive.canonical.com/mirrors.aliyun.com/;s/security.ubuntu.com/mirrors.aliyun.com/' > /etc/apt/sources.list.tmp
+# mv /etc/apt/sources.list.tmp /etc/apt/sources.list
+
+
 包管理
 -------------------------------------------------
 
