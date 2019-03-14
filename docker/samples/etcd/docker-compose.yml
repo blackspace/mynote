@@ -107,10 +107,3 @@ services:
       - "--initial-cluster-state new"
 
 
-
-  ntools:
-    image: amouat/network-utils
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.100"
-
