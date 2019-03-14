@@ -1,0 +1,26 @@
+version: '3'
+services:
+  etcd:
+    build: ./etcd
+    volumes:
+      - /data_etcd/:/etcd.etcd
+    environment:
+      - ETCD_NAME=etcd
+      - ETCD_LISTEN_CLIENT_URLS=https://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=https://etcd:2379
+      - ETCD_CLIENT_CERT_AUTH=true
+      - ETCD_TRUSTED_CA_FILE=/ca.pem
+      - ETCD_CERT_FILE=/etcd.pem
+      - ETCD_KEY_FILE=/etcd-key.pem
+  ruby:
+    build: ./ruby
+    volumes:
+      - "./script/:/script/"
+    working_dir: "/script/"
+    depends_on:
+      - etcd
+    
+  ntools:
+    build: ./ntools
+    depends_on:
+      - etcd

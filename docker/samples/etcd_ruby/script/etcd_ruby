@@ -1,0 +1,15 @@
+require "etcd"
+
+client=Etcd.client(
+  :host => "etcd",
+  :port => 2379,
+  :use_ssl => true,
+  :ca_file => "./ca.pem",
+  :ssl_cert => OpenSSL::X509::Certificate.new(File.read("./client.pem")),
+  :ssl_key => OpenSSL::PKey::EC.new(File.read("./client-key.pem"))
+)
+
+
+client.set('/nodes/n1', value: 1)
+
+puts client.get('/nodes/n1').value
