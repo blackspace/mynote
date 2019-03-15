@@ -1,109 +1,85 @@
 version: '3'
 
-networks:
-  app_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        -  subnet: "172.16.238.0/24"
 services:
-  etcd_1:
-    image: elcolio/etcd
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.11"
+  etcd_1:  
+    image:  quay.io/coreos/etcd
     volumes:
-        - "./data_etcd1/:/data/"
-    command:
-      - "--name etcd_1"
-      - "--listen-client-urls http://0.0.0.0:2379"
-      - "--advertise-client-urls http://172.16.238.11:2379"
-      - "--listen-peer-urls http://0.0.0.0:2380"
-      - "--initial-advertise-peer-urls http://172.16.238.11:2380"
-      - "--initial-cluster-token etcd-cluster-1"
-      - "--initial-cluster etcd_1=http://172.16.238.11:2380,etcd_2=http://172.16.238.12:2380,etcd_3=http://172.16.238.13:2380,etcd_4=http://172.16.238.14:2380,etcd_5=http://172.16.238.15:2380,etcd_6=http://172.16.238.16:2380"
-      - "--initial-cluster-state new"  
+        - "./data_etcd1/:/etcd.etcd/"
+    environment:
+      ETCD_NAME: etcd_1
+      ETCDCTL_API: 3
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd_1:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://etcd_1:2380
+      ETCD_INITIAL_CLUSTER_TOKEN:  etcd-cluster-1
+      ETCD_INITIAL_CLUSTER: etcd_1=http://etcd_1:2380,etcd_2=http://etcd_2:2380,etcd_3=http://etcd_3:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+
   etcd_2:
-    image: elcolio/etcd
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.12"
+    image: quay.io/coreos/etcd
     volumes:
-        - "./data_etcd2/:/data/"
-    command:
-      - "--name etcd_2"
-      - "--listen-client-urls http://0.0.0.0:2379"
-      - "--advertise-client-urls http://172.16.238.12:2379"
-      - "--listen-peer-urls http://0.0.0.0:2380"
-      - "--initial-advertise-peer-urls http://172.16.238.12:2380"
-      - "--initial-cluster-token etcd-cluster-1"
-      - "--initial-cluster etcd_1=http://172.16.238.11:2380,etcd_2=http://172.16.238.12:2380,etcd_3=http://172.16.238.13:2380,etcd_4=http://172.16.238.14:2380,etcd_5=http://172.16.238.15:2380,etcd_6=http://172.16.238.16:2380"
-      - "--initial-cluster-state new"
+        - "./data_etcd2/:/etcd.etcd/"
+    environment:
+      ETCD_NAME: etcd_2
+      ETCDCTL_API: 3
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd_2:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://etcd_2:2380
+      ETCD_INITIAL_CLUSTER_TOKEN:  etcd-cluster-1
+      ETCD_INITIAL_CLUSTER: etcd_1=http://etcd_1:2380,etcd_2=http://etcd_2:2380,etcd_3=http://etcd_3:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+
   etcd_3:
-    image: elcolio/etcd
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.13"
+    image: quay.io/coreos/etcd    
     volumes:
-        - "./data_etcd3/:/data/"
-    command:
-      - "--name etcd_3"
-      - "--listen-client-urls http://0.0.0.0:2379"
-      - "--advertise-client-urls http://172.16.238.13:2379"
-      - "--listen-peer-urls http://0.0.0.0:2380"
-      - "--initial-advertise-peer-urls http://172.16.238.13:2380"
-      - "--initial-cluster-token etcd-cluster-1"
-      - "--initial-cluster etcd_1=http://172.16.238.11:2380,etcd_2=http://172.16.238.12:2380,etcd_3=http://172.16.238.13:2380,etcd_4=http://172.16.238.14:2380,etcd_5=http://172.16.238.15:2380,etcd_6=http://172.16.238.16:2380"
-      - "--initial-cluster-state new"
+        - "./data_etcd3/:/etcd.etcd/"
+    environment:
+      ETCD_NAME: etcd_3
+      ETCDCTL_API: 3
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd_3:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://etcd_3:2380
+      ETCD_INITIAL_CLUSTER_TOKEN:  etcd-cluster-1
+      ETCD_INITIAL_CLUSTER: etcd_1=http://etcd_1:2380,etcd_2=http://etcd_2:2380,etcd_3=http://etcd_3:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+
   etcd_4:
-    image: elcolio/etcd
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.14"
+    image: quay.io/coreos/etcd 
     volumes:
-        - "./data_etcd4/:/data/"
-    command:
-      - "--name etcd_4"
-      - "--listen-client-urls http://0.0.0.0:2379"
-      - "--advertise-client-urls http://172.16.238.14:2379"
-      - "--listen-peer-urls http://0.0.0.0:2380"
-      - "--initial-advertise-peer-urls http://172.16.238.14:2380"
-      - "--initial-cluster-token etcd-cluster-1"
-      - "--initial-cluster etcd_1=http://172.16.238.11:2380,etcd_2=http://172.16.238.12:2380,etcd_3=http://172.16.238.13:2380,etcd_4=http://172.16.238.14:2380,etcd_5=http://172.16.238.15:2380,etcd_6=http://172.16.238.16:2380"
-      - "--initial-cluster-state new"
+        - "./data_etcd4/:/etcd.etcd/"
+    environment:
+      ETCDCTL_API: 3
+      ETCD_NAME: etcd_4
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd_4:2379
+      ETCD_INITIAL_CLUSTER: "etcd_1=http://etcd_1:2380,etcd_2=http://etcd_2:2380,etcd_3=http://etcd_3:2380,etcd_4=http://etcd_4:2380"
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://etcd_4:2380"
+      ETCD_INITIAL_CLUSTER_STATE: "existing"
+
+      
+
   etcd_5:
-    image: elcolio/etcd
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.15"
+    image: quay.io/coreos/etcd 
     volumes:
-        - "./data_etcd5/:/data/"
-    command:
-      - "--name etcd_5"
-      - "--listen-client-urls http://0.0.0.0:2379"
-      - "--advertise-client-urls http://172.16.238.15:2379"
-      - "--listen-peer-urls http://0.0.0.0:2380"
-      - "--initial-advertise-peer-urls http://172.16.238.15:2380"
-      - "--initial-cluster-token etcd-cluster-1"
-      - "--initial-cluster etcd_1=http://172.16.238.11:2380,etcd_2=http://172.16.238.12:2380,etcd_3=http://172.16.238.13:2380,etcd_4=http://172.16.238.14:2380,etcd_5=http://172.16.238.15:2380,etcd_6=http://172.16.238.16:2380"
-      - "--initial-cluster-state new"
+        - "./data_etcd5/:/etcd.etcd/"
+    environment:
+      ETCDCTL_API: 3
+      ETCD_NAME: etcd_5
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://etcd_5:2379
+      ETCD_INITIAL_CLUSTER: "etcd_1=http://etcd_1:2380,etcd_2=http://etcd_2:2380,etcd_3=http://etcd_3:2380,etcd_4=http://etcd_4:2380,,etcd_5=http://etcd_5:2380"
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://etcd_5:2380"
+      ETCD_INITIAL_CLUSTER_STATE: "existing"
 
-  etcd_6:
-    image: elcolio/etcd
-    networks:
-      app_net:
-        ipv4_address: "172.16.238.16"
+
+  ruby:
+    image: ruby
     volumes:
-        - "./data_etcd6/:/data/"
-    command:
-      - "--name etcd_6"
-      - "--listen-client-urls http://0.0.0.0:2379"
-      - "--advertise-client-urls http://172.16.238.16:2379"
-      - "--listen-peer-urls http://0.0.0.0:2380"
-      - "--initial-advertise-peer-urls http://172.16.238.16:2380"
-      - "--initial-cluster-token etcd-cluster-1"
-      - "--initial-cluster etcd_1=http://172.16.238.11:2380,etcd_2=http://172.16.238.12:2380,etcd_3=http://172.16.238.13:2380,etcd_4=http://172.16.238.14:2380,etcd_5=http://172.16.238.15:2380,etcd_6=http://172.16.238.16:2380"
-      - "--initial-cluster-state new"
+      - "./script/:/script/"
+    working_dir: "/script/"
+    
 
-
+    
