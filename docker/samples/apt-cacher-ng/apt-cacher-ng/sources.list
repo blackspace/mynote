@@ -1,0 +1,10 @@
+deb https://mirrors.163.com/ubuntu cosmic main restricted
+deb https://mirrors.163.com/ubuntu cosmic-updates main restricted
+deb https://mirrors.163.com/ubuntu cosmic universe
+deb https://mirrors.163.com/ubuntu cosmic-updates universe
+deb https://mirrors.163.com/ubuntu cosmic multiverse
+deb https://mirrors.163.com/ubuntu cosmic-updates multiverse
+deb https://mirrors.163.com/ubuntu cosmic-backports main restricted universe multiverse
+deb https://mirrors.163.com/ubuntu cosmic-security main restricted
+deb https://mirrors.163.com/ubuntu cosmic-security universe
+deb https://mirrors.163.com/ubuntu cosmic-security multiverse
