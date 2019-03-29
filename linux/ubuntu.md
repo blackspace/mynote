@@ -7,11 +7,11 @@ Ubuntu
 ```
 # cat /etc/apt/sources.list|sed 's/archive.ubuntu.com/mirrors.aliyun.com/;s/archive.canonical.com/mirrors.aliyun.com/;s/security.ubuntu.com/mirrors.aliyun.com/' > /etc/apt/sources.list.tmp
 # mv /etc/apt/sources.list.tmp /etc/apt/sources.list
+```
 
 
 包管理
 -------------------------------------------------
-
 查询所有已经安装的包
 
 ```
@@ -29,7 +29,6 @@ dpkg -L  <包名>
 
 ```
 apt-cache search emacs|grep ^emacs
-
 ```
 
 查询某个包是否安装
@@ -69,10 +68,17 @@ GRUB_CMDLINE_LINUX_DEFAULT="text"
 sudo update-grub
 ```
 
+grub启动恢复
+------------------------------------------------------------
 
+```
+grub-install --root-diretory=./tmp /dev/sda
+```
 
 Ubuntu server 启动修复模式
 ------------------------------------------------------------
+
+
 Esc进入Grub
 
 
