@@ -5,8 +5,25 @@ Ubuntu
 
 更换源
 ```
-# cat /etc/apt/sources.list|sed 's/archive.ubuntu.com/mirrors.aliyun.com/;s/archive.canonical.com/mirrors.aliyun.com/;s/security.ubuntu.com/mirrors.aliyun.com/' > /etc/apt/sources.list.tmp
-# mv /etc/apt/sources.list.tmp /etc/apt/sources.list
+apple@apple:~$ cat /etc/apt/sources.list|grep -E -v  ^\#
+
+deb https://mirrors.aliyun.com/ubuntu/ eoan main restricted
+
+deb https://mirrors.aliyun.com/ubuntu/ eoan-updates main restricted
+
+deb https://mirrors.aliyun.com/ubuntu/ eoan universe
+deb https://mirrors.aliyun.com/ubuntu/ eoan-updates universe
+
+deb https://mirrors.aliyun.com/ubuntu/ eoan multiverse
+deb https://mirrors.aliyun.com/ubuntu/ eoan-updates multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ eoan-backports main restricted universe multiverse
+
+
+deb https://mirrors.aliyun.com/ubuntu/ eoan-security main restricted
+deb https://mirrors.aliyun.com/ubuntu/ eoan-security universe
+deb https://mirrors.aliyun.com/ubuntu/ eoan-security multiverse
+
 ```
 
 
