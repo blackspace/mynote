@@ -54,8 +54,7 @@ sudo apt-add-repository -r ppa:alexey-smirnov/deadbeef
 
 ```
 sudo apt install gnome-shell-extension-system-monitor 
-gnome-shell-extension-tool --enable-extension
-Alt+F2, then r
+gnome-extensions enable system-monitor@paradoxxx.zero.gmail.com
 ```
 
 
